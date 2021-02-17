@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './FeedBackStatistics.module.css';
 
 const FeedBackStatistics = ({
@@ -24,6 +25,14 @@ const FeedBackStatistics = ({
       </ul>
     </div>
   );
+};
+
+FeedBackStatistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  totalFeedback: PropTypes.number.isRequired,
+  positiveFeedback: PropTypes.number.isRequired,
 };
 
 export default FeedBackStatistics;
