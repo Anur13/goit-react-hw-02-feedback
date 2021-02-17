@@ -1,0 +1,6 @@
+.optionButton {
+  background-color: aqua;
+}
+.optionButton::first-letter {
+  text-transform: uppercase;
+}

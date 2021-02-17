@@ -1,11 +1,62 @@
-import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
+import React, { Component } from 'react';
+import NotificationMessage from './FeedbackOptions/Notification-Message/NotificationMessage';
+import FeedBackStatistics from './FeedbackOptions/FeedBack-Statistics/FeedBackStatistics';
+import FeedBackButtons from './FeedbackOptions/FeedBack-Buttons/FeedBackButtons';
 
-function App() {
-  return (
-    <div className="App">
-      <FeedbackOptions />
-    </div>
-  );
+class App extends Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
+  increment = ButtonType => {
+    this.setState(prevState => {
+      return { [ButtonType]: prevState[ButtonType] + 1 };
+    });
+  };
+
+  render() {
+    const stateKeyNames = Object.keys(this.state);
+
+    const countTotalFeedback = Object.values(this.state).reduce(
+      (acc, value) => (acc += value),
+      0,
+    );
+
+    const positiveFeedback = Math.round(
+      (this.state.good / countTotalFeedback) * 100,
+    );
+    return (
+      <div className="container">
+        <h1>Please leave feedback</h1>
+        <div>
+          <FeedBackButtons
+            ButtonType={stateKeyNames[0]}
+            Function={this.increment}
+          />
+          <FeedBackButtons
+            ButtonType={stateKeyNames[1]}
+            Function={this.increment}
+          />
+          <FeedBackButtons
+            ButtonType={stateKeyNames[2]}
+            Function={this.increment}
+          />
+        </div>
+
+        {countTotalFeedback > 0 ? (
+          <FeedBackStatistics
+            totalFeedback={countTotalFeedback}
+            positiveFeedback={positiveFeedback}
+            {...this.state}
+          />
+        ) : (
+          <NotificationMessage />
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
