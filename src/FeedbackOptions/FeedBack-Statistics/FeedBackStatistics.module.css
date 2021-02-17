@@ -1,0 +1,8 @@
+.statisticsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.statisticsListItem {
+  margin-top: 10px;
+}
