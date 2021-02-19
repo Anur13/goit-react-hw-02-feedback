@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import NotificationMessage from './Components/FeedbackOptions/Notification-Message/NotificationMessage';
 import FeedBackStatistics from './Components/FeedbackOptions/FeedBack-Statistics/FeedBackStatistics';
 import FeedBackButtons from './Components/FeedbackOptions/FeedBack-Buttons/FeedBackButtons';
+import NotificationMessage from './Components/FeedbackOptions/Notification-message/NotificationMessage';
 
 class App extends Component {
   state = {
@@ -31,7 +31,16 @@ class App extends Component {
       <div className="container">
         <h1>Please leave feedback</h1>
         <div>
-          <FeedBackButtons
+          {stateKeyNames.map(item => {
+            return (
+              <FeedBackButtons
+                key={item}
+                ButtonType={item}
+                Function={this.increment}
+              />
+            );
+          })}
+          {/* <FeedBackButtons
             ButtonType={stateKeyNames[0]}
             Function={this.increment}
           />
@@ -42,7 +51,7 @@ class App extends Component {
           <FeedBackButtons
             ButtonType={stateKeyNames[2]}
             Function={this.increment}
-          />
+          /> */}
         </div>
 
         {countTotalFeedback > 0 ? (
