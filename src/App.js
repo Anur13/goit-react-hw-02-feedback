@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import NotificationMessage from './FeedbackOptions/Notification-Message/NotificationMessage';
-import FeedBackStatistics from './FeedbackOptions/FeedBack-Statistics/FeedBackStatistics';
-import FeedBackButtons from './FeedbackOptions/FeedBack-Buttons/FeedBackButtons';
+import NotificationMessage from './Components/FeedbackOptions/Notification-Message/NotificationMessage';
+import FeedBackStatistics from './Components/FeedbackOptions/FeedBack-Statistics/FeedBackStatistics';
+import FeedBackButtons from './Components/FeedbackOptions/FeedBack-Buttons/FeedBackButtons';
 
 class App extends Component {
   state = {
